@@ -11,27 +11,41 @@ an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express o
 specific language governing permissions and limitations under the License.
 """
 
+from django.http import HttpResponse
 from django.shortcuts import render
 
 
 # 开发框架中通过中间件默认是需要登录态的，如有不需要登录的，可添加装饰器login_exempt
 # 装饰器引入 from blueapps.account.decorators import login_exempt
+
+
 def home(request):
     """
     首页
     """
-    return render(request, "home_application/index_home.html")
+    # return render(request, "home_application/index_home.html")
+    return render(request, "home_application/index.html")
 
 
-def dev_guide(request):
+def tables(request):
     """
-    开发指引
+    表格样式
     """
-    return render(request, "home_application/dev_guide.html")
+    return render(request, "home_application/tables.html")
 
 
-def contact(request):
+def forms(request):
     """
-    联系页
+    表单样式
     """
-    return render(request, "home_application/contact.html")
+    return render(request, "home_application/forms.html")
+
+
+def bootstrap_elements(request):
+
+    return render(request, "home_application/bootstrap-elements.html")
+
+
+def bootstrap_grid(request):
+
+    return render(request, "home_application/bootstrap-grid.html")

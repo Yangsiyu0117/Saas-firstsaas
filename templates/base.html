@@ -3,154 +3,252 @@
 <html>
 <head>
     {% block head %}
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>{{ APP_CODE }}</title>
-    <link rel="icon" href="{{STATIC_URL}}open/favicon.ico" type="image/x-icon">
-    <meta name="description" content=""/>
-    <meta name="author" content=""/>
-	<!-- bootstrap css -->
-	<link href="{{ REMOTE_STATIC_URL }}v3/assets/bootstrap-3.3.4/css/bootstrap.min.css" rel="stylesheet">
-	<!-- 禁止bootstrap 响应式 （app根据自身需求启用或禁止bootstrap响应式） -->
-	<link href="{{ REMOTE_STATIC_URL }}v3/assets/bootstrap-3.3.4/css/bootstrap_noresponsive.css" rel="stylesheet">
-    <!-- jquery ui css-->
-    <link href="{{ REMOTE_STATIC_URL }}v3/assets/jquery-ui-1.11.0.custom/jquery-ui.min.css" rel="stylesheet">
-    <!--自定义css-->
-	<link href="{{ STATIC_URL }}open/css/bk.css?v={{ STATIC_VERSION}}" rel="stylesheet">
-    <!-- 平台cs	 -->
-	<link href="{{ REMOTE_STATIC_URL }}v3/bk/css/bk.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}open/css/index.css?v={{ STATIC_VERSION }}">
-    <style>
-    	/*如果你需要给你的应用固定高度和宽度，请在这里修改*/
-		body {min-width:1202px;}
-		.container{
-			width:auto;
-			min-width: 1200px;
-		}
-	</style>
-	{% endblock %}
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>{{ APP_CODE }}</title>
+        <link rel="icon" href="{{ STATIC_URL }}open/favicon.ico" type="image/x-icon">
+        <!-- Bootstrap css -->
+        <link href="https://magicbox.bk.tencent.com/static_api/v3/assets/bootstrap-3.3.4/css/bootstrap.min.css"
+              rel="stylesheet">
+        <link href="https://magicbox.bk.tencent.com/static_api/v3/assets/fontawesome/css/font-awesome.css"
+              rel="stylesheet">
+        <!-- 当前项目样式文件 -->
+        <link href="{{ STATIC_URL }}template2/css/sb-admin.css" rel="stylesheet">
+        <link href="{{ STATIC_URL }}template2/css/sb-bk-theme.css" rel="stylesheet">
+        <!--蓝鲸平台APP 公用的样式文件 -->
+
+        <link href="https://magicbox.bk.tencent.com/static_api/v3/bk/css/bk.css" rel="stylesheet">
+        <!-- 以下两个插件用于在IE8以及以下版本浏览器支持HTML5元素和媒体查询，如果不需要用可以移除 -->
+        <!--[if lt IE 9]>
+        <script src="https://magicbox.bk.tencent.com/static_api/v3/assets/js/html5shiv.min.js"></script>
+        <script src="https://magicbox.bk.tencent.com/static_api/v3/assets/js/respond.min.js"></script>
+        <![endif]-->
+    {% endblock %}
 </head>
 
 <body>
+<div id="wrapper">
     <!--顶部导航 Start-->
-    <nav class="navbar navbar-default king-horizontal-nav2" role="navigation" style="margin-bottom: 0; border-bottom: 0">
-	    <div class="container" style="width: 100%;">
-	        <div class="navbar-header col-md-6 col-sm-6 col-xs-6 logo">
-	            <a class="navbar-brand" href="{{ SITE_URL }}" style="font-size:24px;padding-top: 15px;color: #438bca;">
-	                {% trans '蓝鲸开发框架(Django模板)' %}
-	            </a>
-	        </div>
-	        <div class="collapse navbar-collapse navbar-responsive-collapse col-md-6 col-sm-6 col-xs-6" id="king-example-navbar-collapse-2" style="float:right;">
-                <ul class="nav navbar-nav navbar-right">
-                  <span class="avatar" style="cursor: default;">
-                    <img src="{{ STATIC_URL }}open/img/getheadimg.jpg" width="40" alt="Avatar" class="avatar-img">
-                    {% if request.user.is_superuser %}
-                        <i class="crown"></i>
-                    {% endif %}
-                    <span>{{ request.user.username }}</span>
-                  </span>
-                </ul>
-                <ul class="nav navbar-nav" style="float:right;">
-					{% block navigation %}
-	                <li id="home"><a href="{{ SITE_URL }}"><span>{% trans '首页' %}</span></a></li>
-                    <li id="guide"><a href="{{ SITE_URL }}dev-guide/"><span>{% trans '开发指引' %}</span></a></li>
-	                <li id="contact"><a href="{{ SITE_URL }}contact/"><span>{% trans '联系我们' %}</span></a></li>
-                    <li style='display: {{IS_DISPLAY_LANGUAGE_CHANGE}};'>
-                        <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
-                            <span>{% trans "语言" %}</span>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="">
+                <i class="fa fa-leaf f20 mr5"></i>
+                后台管理系统
+            </a>
+        </div>
+        <!-- Top Menu Items -->
+        <ul class="nav navbar-right top-nav">
+            <li class="dropdown">
+                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b
+                        class="caret"></b></a>
+                <ul class="dropdown-menu message-dropdown">
+                    <li class="message-preview">
+                        <a href="javascript:;">
+                            <div class="media">
+                                    <span class="pull-left">
+                                        <img class="media-object" src="{{ STATIC_URL }}template2/img/50x50.png" alt="">
+                                    </span>
+                                <div class="media-body">
+                                    <h5 class="media-heading"><strong>qcloud</strong>
+                                    </h5>
+                                    <p class="small text-muted">Yesterday at 4:32 PM</p>
+                                    <p>当前有一条未读的短消息...</p>
+                                </div>
+                            </div>
                         </a>
-                        <ul class="dropdown-menu" style=" left:0;right:auto;">
-                            <li onclick="change_language('zh-hans')">
-                                <a href="javascript:;">
-                                    简体中文
-                                </a>
-                            </li>
-                            <li onclick="change_language('en')">
-                                <a href="javascript:;">
-                                    English
-                                </a>
-                            </li>
-                        </ul>
                     </li>
-					{% endblock %}
-	            </ul>
-	        </div>
-	    </div>
-	</nav>
-	<!--顶部导航 End-->
+                    <li class="message-preview">
+                        <a href="javascript:;">
+                            <div class="media">
+                                    <span class="pull-left">
+                                        <img class="media-object" src="{{ STATIC_URL }}template2/img/50x50.png" alt="">
+                                    </span>
+                                <div class="media-body">
+                                    <h5 class="media-heading"><strong>qcloud</strong>
+                                    </h5>
+                                    <p class="small text-muted">Yesterday at 4:32 PM</p>
+                                    <p>当前有一条未读的短消息...</p>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="message-preview">
+                        <a href="javascript:;">
+                            <div class="media">
+                                    <span class="pull-left">
+                                        <img class="media-object" src="{{ STATIC_URL }}template2/img/50x50.png" alt="">
+                                    </span>
+                                <div class="media-body">
+                                    <h5 class="media-heading"><strong>qcloud</strong>
+                                    </h5>
+                                    <p class="small text-muted">Yesterday at 4:32 PM</p>
+                                    <p>当前有一条未读的短消息...</p>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="message-footer">
+                        <a href="javascript:;">查看所有消息</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b
+                        class="caret"></b></a>
+                <ul class="dropdown-menu alert-dropdown">
+                    <li>
+                        <a href="javascript:;"><span class="label label-default">&nbsp;&nbsp;提醒内容&nbsp;&nbsp;</span></a>
+                    </li>
+                    <li>
+                        <a href="javascript:;"><span class="label label-primary">&nbsp;&nbsp;提醒内容&nbsp;&nbsp;</span></a>
+                    </li>
+                    <li>
+                        <a href="javascript:;"><span class="label label-success">&nbsp;&nbsp;提醒内容&nbsp;&nbsp;</span></a>
+                    </li>
+                    <li>
+                        <a href="javascript:;"><span class="label label-info">&nbsp;&nbsp;提醒内容&nbsp;&nbsp;</span></a>
+                    </li>
+                    <li>
+                        <a href="javascript:;"><span class="label label-warning">&nbsp;&nbsp;提醒内容&nbsp;&nbsp;</span></a>
+                    </li>
+                    <li>
+                        <a href="javascript:;"><span class="label label-danger">&nbsp;&nbsp;提醒内容&nbsp;&nbsp;</span></a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="javascript:;" class='text-center'>查看所有提醒</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"><i
+                        class="fa fa-user"></i> {{ request.user.username }}
+                    <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="javascript:;"><i class="fa fa-fw fa-user"></i> 用户</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;"><i class="fa fa-fw fa-envelope"></i> 消息盒</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;"><i class="fa fa-fw fa-gear"></i> 设置</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="javascript:;"><i class="fa fa-fw fa-power-off"></i> 退出</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav side-nav">
+                {#                <li class="active">#}
+                <li id="home">
+                    <a href="{{ SITE_URL }}"><i class="fa fa-fw fa-dashboard"></i> 首页</a>
+                </li>
+                <li id="tables">
+                    <a href="{{ SITE_URL }}tables"><i class="fa fa-fw fa-table"></i> 表格</a>
+                </li>
+                <li id="forms">
+                    <a href="{{ SITE_URL }}forms"><i class="fa fa-fw fa-edit"></i> 表单</a>
+                </li>
+                <li id="bootstrap-elements">
+                    <a href="{{ SITE_URL }}bootstrap-elements"><i class="fa fa-fw fa-desktop"></i> 排版</a>
+                </li>
+                <li id="bootstrap-grid">
+                    <a href="{{ SITE_URL }}bootstrap-grid"><i class="fa fa-fw fa-wrench"></i> Bootstrap 布局</a>
+                </li>
+                <li>
+                    <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i
+                            class="fa fa-fw fa-arrows-v"></i> 下拉菜单 <i class="fa fa-fw fa-caret-down"></i></a>
+                    <ul id="demo" class="collapse">
+                        <li>
+                            <a href="javascript:;">子菜单1 </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">子菜单2</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </nav>
+    <!--顶部导航 End-->
 
     <!-- 固定宽度居中 start -->
     {% block content %}{% endblock %}
 
     <!-- 固定宽度表单居中 end -->
     <!-- 尾部声明 start -->
-    <div class="foot" id="footer">
-        {% block footerline %} {% endblock %}
-        <ul class="links ft">
-            <li>
-                <a id="contact_us" class="link">{% trans 'QQ咨询(800802001)' %}</a>
-                | <a href="http://bbs.bk.tencent.com/forum.php" target="_blank" hotrep="hp.footer.feedback" class="link">{% trans '蓝鲸论坛' %}</a>
-                | <a href="http://bk.tencent.com/" target="_blank" hotrep="hp.footer.feedback" class="link">{% trans '蓝鲸官网' %}</a>
-                | <a href="{{ BK_URL }}" target="_blank" hotrep="hp.footer.feedback" class="link">{% trans '蓝鲸智云工作台' %}</a>
-            </li>
-            <li><p class="copyright">Copyright © 2012-{{NOW.year}} Tencent BlueKing. All Rights Reserved.</p> </li>
-          	<li><p class="copyright">{% trans '蓝鲸智云 版权所有' %}</p> </li>
-        </ul>
-      </div>
-      <!-- 尾部声明 start -->
+    {#    <div class="foot" id="footer">#}
+    {#        {% block footerline %} {% endblock %}#}
+    {#        <ul class="links ft">#}
+    {#            <li>#}
+    {#                <a id="contact_us" class="link">{% trans 'QQ咨询(800802001)' %}</a>#}
+    {#                | <a href="http://bbs.bk.tencent.com/forum.php" target="_blank" hotrep="hp.footer.feedback"#}
+    {#                     class="link">{% trans '蓝鲸论坛' %}</a>#}
+    {#                | <a href="http://bk.tencent.com/" target="_blank" hotrep="hp.footer.feedback"#}
+    {#                     class="link">{% trans '蓝鲸官网' %}</a>#}
+    {#                | <a href="{{ BK_URL }}" target="_blank" hotrep="hp.footer.feedback"#}
+    {#                     class="link">{% trans '蓝鲸智云工作台' %}</a>#}
+    {#            </li>#}
+    {#            <li><p class="copyright">Copyright © 2012-{{ NOW.year }} Tencent BlueKing. All Rights Reserved.</p></li>#}
+    {#            <li><p class="copyright">{% trans '蓝鲸智云 版权所有' %}</p></li>#}
+    {#        </ul>#}
+    {#    </div>#}
+    <!-- 尾部声明 start -->
+</div>
 </body>
 {% block base_js %}
-<!-- jquery js  -->
-<script src="{{ REMOTE_STATIC_URL }}v3/assets/js/jquery-1.10.2.min.js"></script>
-<script src="{{ REMOTE_STATIC_URL }}jquery/jquery.json-2.3.min.js"></script>
-<!-- 处理jquery兼容问题，jQuery Migrate（迁移）插件包含了1.6.4以来存在但1.9已不支持所有API -->
-<script src="{{ REMOTE_STATIC_URL }}v3/assets/js/jquery-migrate-1.2.1.min.js"></script>
-<!-- bootstrap js  -->
-<script src="{{ REMOTE_STATIC_URL }}v3/assets/bootstrap-3.3.4/js/bootstrap.min.js"></script>
-<!-- jquery ui js-->
-<script src="{{ REMOTE_STATIC_URL }}v3/assets/jquery-ui-1.11.0.custom/jquery-ui.min.js"></script>
-<!-- 平台 js  -->
-<script src="{{ REMOTE_STATIC_URL }}v3/bk/js/bk.js"></script>
+    <!-- jquery js  -->
+    <!-- 如果要使用Bootstrap的js插件，必须先调入jQuery -->
+    <script src="https://magicbox.bk.tencent.com/static_api/v3/assets/js/jquery-1.10.2.min.js"></script>
+    <!-- 包括所有bootstrap的js插件或者可以根据需要使用的js插件调用　-->
+    <script src="https://magicbox.bk.tencent.com/static_api/v3/assets/bootstrap-3.3.4/js/bootstrap.min.js"></script>
 
-<!-- 这个是全局配置，如果需要在js中使用app_code和site_url,则这个javascript片段一定要保留 -->
-<script type="text/javascript">
-	var app_code = "{{ APP_CODE }}";			// 在蓝鲸系统里面注册的"应用编码"
-	var site_url = "{{ SITE_URL }}";			// app的url前缀,在ajax调用的时候，应该加上该前缀
-	var remote_static_url = "{{ REMOTE_STATIC_URL }}";   //远程资源链接，403页面需要，不要删除
-	var debug_mode = JSON.parse("{{ DEBUG }}");	// 是否调试模式
-</script>
-<!--统计js  勿删-->
-<script src="{{ REMOTE_STATIC_URL }}analysis.js?v={{ STATIC_VERSION }}"></script>
-<script src="{{ STATIC_URL }}account/login.js?v={{ STATIC_VERSION }}"></script>
-<script src="{{ STATIC_URL }}js/csrftoken.js?v={{ STATIC_VERSION }}"></script>
+    <!-- 包括所有kendoui的js插件或者可以根据需要使用的js插件调用　-->
+    <script src="https://magicbox.bk.tencent.com/static_api/v3/assets/kendoui-2015.2.624/js/kendo.all.min.js"></script>
 
-<script>
-    var relative_path = "{{ APP_PATH }}";
-    console.log(relative_path);
-    if ( relative_path == site_url)
-        $('#home').addClass('king-navbar-active');
-    else if (relative_path == site_url + "dev-guide/")
-        $('#guide').addClass('king-navbar-active');
-    else if (relative_path == site_url + "contact/")
-        $('#contact').addClass('king-navbar-active');
 
-    function change_language(lang) {
-        $.ajax({
-            url: site_url + 'i18n/setlang/',
-            method: 'post',
-            data: {
-                'language': lang,
-            },
-            success: function (ret) {
-                window.location.reload()
-            }
-        })
-    }
-</script>
-
+    <!-- 这个是全局配置，如果需要在js中使用app_code和site_url,则这个javascript片段一定要保留 -->
+    <script type="text/javascript">
+        var app_code = "{{ APP_CODE }}";			// 在蓝鲸系统里面注册的"应用编码"
+        var site_url = "{{ SITE_URL }}";			// app的url前缀,在ajax调用的时候，应该加上该前缀
+        var remote_static_url = "{{ REMOTE_STATIC_URL }}";   //远程资源链接，403页面需要，不要删除
+        var debug_mode = JSON.parse("{{ DEBUG }}");	// 是否调试模式
+    </script>
+    <script src="{{ STATIC_URL }}account/login.js?v={{ STATIC_VERSION }}"></script>
+    <script src="{{ STATIC_URL }}js/csrftoken.js?v={{ STATIC_VERSION }}"></script>
+    <script>
+        var relative_path = "{{ APP_PATH }}";
+        console.log(relative_path, site_url);
+        if (relative_path == site_url)
+            $('#home').addClass('active');
+        else if (relative_path == site_url + "tables/")
+            $('#tables').addClass('active');
+        else if (relative_path == site_url + "forms/")
+            $('#forms').addClass('active');
+        else if (relative_path == site_url + "bootstrap-elements/")
+            $('#bootstrap-elements').addClass('active');
+        else if (relative_path == site_url + "bootstrap-grid/")
+            $('#bootstrap-grid').addClass('active');
+    </script>
 {% endblock %}
 {% block extra_block %}
-<!--
-    这里放置子页面中附加内容，一般为js，注意子模版中的js如果使用到以上js库，必须放置在这里
- -->
+    <!--
+        这里放置子页面中附加内容，一般为js，注意子模版中的js如果使用到以上js库，必须放置在这里
+     -->
 {% endblock %}
 </html>

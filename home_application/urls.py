@@ -16,7 +16,10 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = (
-    url(r"^$", views.home),
-    url(r"^dev-guide/$", views.dev_guide),
-    url(r"^contact/$", views.contact),
+    url(r'^$', views.home),
+    url(r'tables/$', views.tables),
+    url(r'forms/$', views.forms),
+
+    url(r'bootstrap-elements/$', views.bootstrap_elements),
+    url(r'bootstrap-grid/$', views.bootstrap_grid),
 )

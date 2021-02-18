@@ -39,14 +39,14 @@ def get_env_or_raise(key):
 
 
 # 应用 ID
-APP_CODE = ""
+APP_CODE = "firstsaas"
 # 应用用于调用云 API 的 Secret
-SECRET_KEY = ""
+SECRET_KEY = "5ad7d5dc-47ac-4601-a73d-7b8c7631b5ab"
 
 # SaaS运行版本，如非必要请勿修改
 RUN_VER = "open"
 # 蓝鲸SaaS平台URL，例如 http://paas.bking.com
-BK_URL = None
+BK_URL = "http://paas.blueking.net.cn"
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

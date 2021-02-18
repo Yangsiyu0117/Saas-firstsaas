@@ -34,7 +34,6 @@ from blueapps.conf.log import get_logging_config_dict
 # 请在这里加入你的自定义 APP
 INSTALLED_APPS += (  # noqa
     "home_application",
-    "mako_application",
 )
 
 # 这里是默认的中间件，大部分情况下，不需要改动
