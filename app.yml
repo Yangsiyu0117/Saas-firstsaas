@@ -1,0 +1,19 @@
+!!python/unicode 'language': python
+app_code: template
+app_name: 模板测试
+app_name_en: template test
+is_use_celery: False
+author: 上海蓝正
+introduction: 响应式布局前端
+introduction_en: no....
+version: 3.6.28
+category: 运维工具
+language_support: 中文
+desktop:
+  width: 1280
+  height: 720
+  is_max: True
+container:
+    memory: 1024
+yums:
+  - git:
