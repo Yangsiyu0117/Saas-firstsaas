@@ -1,19 +1,16 @@
-!!python/unicode 'language': python
-app_code: template
+app_code: te_saas
 app_name: 模板测试
-app_name_en: template test
-is_use_celery: False
-author: 上海蓝正
-introduction: 响应式布局前端
-introduction_en: no....
-version: 3.6.28
+author: morton
 category: 运维工具
-language_support: 中文
+container:
+    memory: 1024
+!!python/unicode 'date': '2021-2-18 10:05:00'
 desktop:
   width: 1280
   height: 720
   is_max: True
-container:
-    memory: 1024
-yums:
-  - git:
+introduction: 响应式布局前端
+is_use_celery: False
+language: python
+version: 3.6.28
+date: 2021-2-18 10:05:13

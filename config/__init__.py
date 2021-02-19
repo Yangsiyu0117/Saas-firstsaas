@@ -39,7 +39,7 @@ def get_env_or_raise(key):
 
 
 # 应用 ID
-APP_CODE = "firstsaas"
+APP_CODE = "template_saas"
 # 应用用于调用云 API 的 Secret
 SECRET_KEY = "5ad7d5dc-47ac-4601-a73d-7b8c7631b5ab"
 
